@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Switch Progress")]
     public int switchesActivated = 0;
+    public DoorController lastRoomDoor;
+    public DoorController frontDoor;
+    public bool missionComplete = false;
 
     private void Awake()
     {
@@ -19,9 +22,23 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Switch Aktif: " + switchesActivated);
 
-        if (switchesActivated >= 2)
+        if (switchesActivated == 2)
         {
             Debug.Log("Kamar terakhir terbuka!");
+
+            lastRoomDoor.UnlockDoor();
+        }
+    }
+
+    public void FinalSwitchActivated()
+    {
+        missionComplete = true;
+
+        Debug.Log("Misi selesai");
+
+        if (frontDoor != null)
+        {
+            frontDoor.UnlockDoor();
         }
     }
 }

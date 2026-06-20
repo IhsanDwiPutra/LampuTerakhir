@@ -16,6 +16,13 @@ public class PlayerInteraction : MonoBehaviour
             {
                 InteractableSwitch switchObj = hit.collider.GetComponentInParent<InteractableSwitch>();
 
+                DoorController door = hit.collider.GetComponentInParent<DoorController>();
+
+                if (door != null)
+                {
+                    door.Interact();
+                }
+
                 if (switchObj != null)
                 {
                     switchObj.Interact();
