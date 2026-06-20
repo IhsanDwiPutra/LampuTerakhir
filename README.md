@@ -176,7 +176,7 @@ This project is licensed under the MIT License.
 
 Informatics Student • Indie Game Developer • Unity Learner
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/IhsanDwiPutra
 
 ---
 
