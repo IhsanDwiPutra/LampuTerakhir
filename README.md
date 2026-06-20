@@ -59,7 +59,7 @@ Pemain harus:
 
 ### Game Engine
 
-- Unity 2022.3 LTS
+- Unity 6
 
 ### Language
 
