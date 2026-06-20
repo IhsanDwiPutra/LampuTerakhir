@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EntranceTrigger : MonoBehaviour
@@ -14,7 +15,16 @@ public class EntranceTrigger : MonoBehaviour
         {
             triggered = true;
 
-            frontDoor.CloseAndLock();
+            frontDoor.CloseDoor();
+            StartCoroutine(LockDoorAfterClose());
         }
+    }
+
+    IEnumerator LockDoorAfterClose()
+    {
+        yield return new WaitForSeconds(0.6f);
+        
+        frontDoor.isLocked = true;
+        Debug.Log("Pintu depan terkunci");
     }
 }

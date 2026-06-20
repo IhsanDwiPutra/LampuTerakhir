@@ -6,7 +6,7 @@ public class EndingTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("GAME TAMAT");
+            EndingManager.Instance.PlayEnding();
         }
     }
 }

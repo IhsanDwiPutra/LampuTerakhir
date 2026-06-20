@@ -7,6 +7,9 @@ public class InteractableSwitch : MonoBehaviour
     public bool isFinalSwitch = false;
     public Light targetLight;
     public AudioSource switchAudio;
+    public Renderer lampBulbRenderer;
+    public Material lampOnMaterial;
+    public Material lampOffMaterial;
 
     public void Interact()
     {
@@ -22,6 +25,11 @@ public class InteractableSwitch : MonoBehaviour
         if (switchAudio != null)
         {
             switchAudio.Play();
+        }
+
+        if (lampBulbRenderer != null)
+        {
+            lampBulbRenderer.material = lampOffMaterial;
         }
 
         Debug.Log(gameObject.name + " diaktifkan!");

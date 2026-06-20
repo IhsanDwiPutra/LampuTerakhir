@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public DoorController lastRoomDoor;
     public DoorController frontDoor;
     public bool missionComplete = false;
+    public AudioSource knockAudio;
+    public Light bedroomLight;
 
     private void Awake()
     {
@@ -22,7 +25,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Switch Aktif: " + switchesActivated);
 
-        if (switchesActivated == 2)
+        if (switchesActivated >= 2)
         {
             Debug.Log("Kamar terakhir terbuka!");
 
@@ -40,5 +43,20 @@ public class GameManager : MonoBehaviour
         {
             frontDoor.UnlockDoor();
         }
+
+        StartCoroutine(PlayKnock());
+    }
+
+    IEnumerator PlayKnock()
+    {
+        yield return new WaitForSeconds(1f);
+        knockAudio.Play();
+        Debug.Log("Suara ketukan aktif");
+
+        yield return new WaitForSeconds(1f);
+        bedroomLight.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+        bedroomLight.enabled = false;
     }
 }
